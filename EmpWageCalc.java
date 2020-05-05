@@ -3,17 +3,20 @@ public class EmpWageCalc {
 	private static final int IS_FULL_TIME = 1;
 	private static final int IS_PART_TIME = 2;
 	private static final int EMP_RATE_PER_HOUR = 20;
-	private static final int EMP_WORKING_DAYS = 20;
+	private static final int MAX_WORKING_DAYS = 20;
+	private static final int MAX_WORKING_HRS = 100;
 
 	public static void main(String []args){
 		System.out.println("Welcome to Employee Wage Computation");
 
-		int empHrs = 0;
-		int empWage = 0 ;
-		int totalEmpHrs = 0 ;
+		int empWorkingHrs = 0 ;
 		int totalEmpWage = 0 ;
+		int empWorkingDays = 0 ;
 
-		for(int day = 0; day < EMP_WORKING_DAYS ; day++ ){
+		while( empWorkingDays < MAX_WORKING_DAYS && empWorkingHrs <= MAX_WORKING_HRS ){
+
+			empWorkingDays++;
+			int empHrs = 0;
 			int empCheck = (int) Math.floor( Math.random() * 10 ) % 3;
 
 			switch( empCheck ){
@@ -26,9 +29,9 @@ public class EmpWageCalc {
 				default:
 					empHrs = 0;
 			}
-			totalEmpHrs += empHrs ;
+			empWorkingHrs += empHrs ;
 		}
-		totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR;
+		totalEmpWage = empWorkingHrs * EMP_RATE_PER_HOUR;
 		System.out.println("Employee Wage:"+ totalEmpWage);
 	}
 }
