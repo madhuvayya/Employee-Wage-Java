@@ -6,9 +6,7 @@ public class EmpWageCalc {
 	private static final int MAX_WORKING_DAYS = 20;
 	private static final int MAX_WORKING_HRS = 100;
 
-	public static void main(String []args){
-		System.out.println("Welcome to Employee Wage Computation");
-
+	public static int calcEmpWage(){
 		int empWorkingHrs = 0 ;
 		int totalEmpWage = 0 ;
 		int empWorkingDays = 0 ;
@@ -32,6 +30,12 @@ public class EmpWageCalc {
 			empWorkingHrs += empHrs ;
 		}
 		totalEmpWage = empWorkingHrs * EMP_RATE_PER_HOUR;
+		return totalEmpWage;
+	}
+
+	public static void main(String []args){
+		System.out.println("Welcome to Employee Wage Computation");
+		int totalEmpWage = calcEmpWage();
 		System.out.println("Employee Wage:"+ totalEmpWage);
 	}
 }
