@@ -19,7 +19,7 @@ public class EmpWageCalc {
 
 	public static void calcEmpWageForEachCompany(){
 		for(int company=0; company<numOfCompanies ; company++){
-			int totalWage = calcEmpWage(companiesArrayList.get(company));
+			int totalWage = getTotalWage(companiesArrayList.get(company));			
 			System.out.print(companiesArrayList.get(company).company+" company employee Daily wages:");
 			printCompanyEmpDailyWage(companiesArrayList.get(company).numOfWorkingDays);
 			System.out.println();
@@ -33,6 +33,9 @@ public class EmpWageCalc {
 		}
         }
 	
+	public static int getTotalWage(CompanyEmpWage cew){
+		return calcEmpWage(cew);
+        }
 	
 	public static int empWorkingHours(){
 		int empCheck = (int) Math.floor( Math.random() * 10 ) % 3;
