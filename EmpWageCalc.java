@@ -1,17 +1,17 @@
+import java.util.ArrayList;
+
 public class EmpWageCalc {
 
 	private static final int IS_FULL_TIME = 1;
 	private static final int IS_PART_TIME = 2;
 
-	public static void calcEmpWageForCompany(CompanyEmpWage cew){
+	private static int empHrs;
+	private static int numOfCompanies;
 
-		int empWorkingHrs = 0, totalEmpWage = 0, empWorkingDays = 0 ;
+	private static ArrayList<Integer> arrayList = new ArrayList<Integer>(); 
 
-		while( empWorkingDays < cew.numOfWorkingDays && empWorkingHrs <= cew.maxHoursPerMonth ){
-
-			empWorkingDays++;
-			int empHrs = 0;
-			int empCheck = (int) Math.floor( Math.random() * 10 ) % 3;
+	public static int empWorkingHours(){
+		int empCheck = (int) Math.floor( Math.random() * 10 ) % 3;
 
 			switch( empCheck ){
 		 		case IS_FULL_TIME:
@@ -23,9 +23,20 @@ public class EmpWageCalc {
 				default:
 					empHrs = 0;
 			}
-			empWorkingHrs += empHrs ;
+		return empHrs;
+	}
+
+	public static void calcEmpWageForCompany(CompanyEmpWage cew){
+
+		int empWorkingHrs = 0, totalEmpWage = 0, empWorkingDays = 0 ;
+
+		while( empWorkingDays < cew.numOfWorkingDays && empWorkingHrs <= cew.maxHoursPerMonth ){
+
+			empWorkingDays++;
+			empWorkingHrs += empWorkingHours();
 		}
 		totalEmpWage = empWorkingHrs * cew.empRatePerHour;
+		arrayList.add(totalEmpWage);		
 		System.out.println(cew.company+" Employee Wage is :"+ totalEmpWage);
 	}
 
