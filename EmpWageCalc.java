@@ -12,25 +12,25 @@ public class EmpWageCalc {
 	private static ArrayList<Integer> wagesArrayList = new ArrayList<Integer>(); 
 
 	public static void addCompany(String company, int empRatePerHr, int maxWorkingDays, int maxWorkingHrsPerMonth){
-		CompanyEmpWage cew = new CompanyEmpWage (company,empRatePerHr,maxWorkingDays, maxWorkingHrsPerMonth);
-		companiesArrayList.add(cew);
+		CompanyEmpWage companyEmpWage = new CompanyEmpWage (company,empRatePerHr,maxWorkingDays, maxWorkingHrsPerMonth);
+		companiesArrayList.add(companyEmpWage);
 		numOfCompanies++;
-	}	
+	}
 
 	public static void calcEmpWageForEachCompany(){
 		for(int company=0; company<numOfCompanies ; company++){
 			int totalWage = getTotalWage(companiesArrayList.get(company));			
 			System.out.print(companiesArrayList.get(company).company+" company employee Daily wages:");
 			printCompanyEmpDailyWage(companiesArrayList.get(company).numOfWorkingDays);
-			System.out.println();
-			System.out.println("totalWage"+totalWage);
+			System.out.println(" totalWage"+totalWage);
 		}
-	}		
+	}
 
 	public static void printCompanyEmpDailyWage(int numOfWorkingDays){
 		for(int workingDay=0; workingDay < numOfWorkingDays; workingDay++){
 			System.out.print(wagesArrayList.get(workingDay)+" ");			
 		}
+
         }
 	
 	public static int getTotalWage(CompanyEmpWage cew){
